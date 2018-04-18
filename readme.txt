@@ -76,5 +76,11 @@ New York and Washington datasets for the Term 1 DAND US Bikeshare Data Project.
 	Relevant Functions: usertype_info(df), gender_info(df)
 	URL: https://stackoverflow.com/questions/38134012/pandas-dataframe-fillna-only-some-columns-in-place
 
+16.	Title: pandas.DataFrame.drop
+	Purpose: Learn to remove created columns in a dataframe so only raw data is shown.
+	Relevant Functions: display_data(df)
+	URL: https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop.html
+ 
+
 
 

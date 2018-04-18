@@ -472,6 +472,31 @@ def birthyear_info(df):
 
     return None
 
+def display_data(df):
+    '''Provides the user the option of viewing five lines of data, repeating this upon request
+       until the user responds with 'no'.
+    Args:
+        csv city data file.
+    Returns:
+        none.
+    '''
+    # remove the columns I created so that only raw data appears
+    df = df.drop(['month','day_of_week', 'start_hour', 'Combined'], axis=1)
+
+    i = 0
+
+    # ask user to see 5 lines of data
+    show_data = input("\nWould you like to see five lines of code? Type 'yes' to view.\n")
+
+    # this will keep asking the user to see the next five lines of code until
+    # they do not respond with 'yes'
+    while show_data.lower() == 'yes':
+        print(df.iloc[i:i + 5])
+        i += 5
+        show_data = input(
+                    "\nWould you like to see five more lines of data? Type \'yes\' to view.\n"
+                    )
+
 def main():
     '''Calculates and prints out the descriptive statistics based on the city and
     time period specified by the user. Also includes runtime information.
@@ -525,6 +550,9 @@ def main():
             print('The User info statistics took ' + str(runtime_userinfo) + ' seconds to run.' )
             print('-'*100)
 
+            # Ask the user if they want to see 5 lines of code, repeating the request until they say no.
+            display_data(df)
+
         # Analyse city data with just a day filter (ie. no month filter)
         elif time_period == 'day':
             month = 'all'
@@ -562,6 +590,10 @@ def main():
             print('The User info statistics took ' + str(runtime_userinfo) + ' seconds to run.' )
             print('-'*100)
 
+            # Ask the user if they want to see 5 lines of code, repeating the request until they say no.
+            display_data(df)
+
+
         # Analyse city data with month and day filters applied
         elif time_period == 'both':
             month = get_month()
@@ -597,6 +629,9 @@ def main():
             + ' seconds to run.')
             print('The User info statistics took ' + str(runtime_userinfo) + ' seconds to run.' )
             print('-'*100)
+
+            # Ask the user if they want to see 5 lines of code, repeating the request until they say no.
+            display_data(df)
 
         else:
             # Analyse city data with no time filters
@@ -637,8 +672,11 @@ def main():
             print('The User info statistics took ' + str(runtime_userinfo) + ' seconds to run.' )
             print('-'*100)
 
+            # Ask the user if they want to see 5 lines of code, repeating the request until they say no.
+            display_data(df)
+
         #Ask if the user wants to continue with another data query
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        restart = input('\nWould you like to restart? Type \'yes\' to proceed.\n')
         if restart.lower() != 'yes':
             break
 
